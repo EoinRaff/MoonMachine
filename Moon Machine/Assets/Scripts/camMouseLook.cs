@@ -8,7 +8,7 @@ public class camMouseLook : MonoBehaviour {
 	Vector2 smoothV;
 	public bool invertLook;
 	public float sensitivity = 5.0f;
-	public float smoothing = 2.0f;
+	public float smoothing = 1.0f;
 	public float lowerClamp = -90f;
 	public float upperClamp = 90f;
 
