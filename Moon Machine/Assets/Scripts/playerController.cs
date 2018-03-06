@@ -30,11 +30,10 @@ public class playerController : MonoBehaviour {
 
         float translation = Input.GetAxis("Vertical") * speed;
         float strafe = Input.GetAxis("Horizontal") * speed;
-        //translation *= Time.deltaTime;
-        //strafe *= Time.deltaTime;
+        translation *= Time.deltaTime;
+        strafe *= Time.deltaTime;
 
-        GetComponent<Rigidbody>().velocity = new Vector3(strafe, 0, translation);
-        //transform.Translate(strafe, 0, translation);
+        transform.Translate(strafe, 0, translation);
 
         if (Input.GetKeyDown("escape"))
 		{
