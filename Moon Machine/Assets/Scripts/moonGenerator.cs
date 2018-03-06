@@ -5,15 +5,13 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Attractor))]
 public class moonGenerator : MonoBehaviour {
-	
-	public float mass;
-	float moonMass;
 
 	public float aimSpeed = 5;
 	public float minDistance = 1f;
-	public float massGain = 1f;
+	public GameObject cam;		
+	
 	bool charging;
-	public GameObject cam;
+
 	[SerializeField]
 	GameObject holoMoonPrefab;
 	GameObject holoMoon;
@@ -21,6 +19,7 @@ public class moonGenerator : MonoBehaviour {
 	[SerializeField]
 	GameObject moonPrefab;
 	GameObject moon;
+	
 	Attractor moonAtractor;
 	Attractor thisAttractor;
 	Rigidbody rb;
@@ -38,7 +37,6 @@ public class moonGenerator : MonoBehaviour {
 			holoMoon = Instantiate(holoMoonPrefab, transform.position + cam.transform.forward * minDistance, cam.transform.rotation);
 			Destroy(moon);
 			thisAttractor.active = false;
-			moonMass = mass;
 			rb.useGravity = true;
 
 		}
@@ -47,7 +45,6 @@ public class moonGenerator : MonoBehaviour {
 			if (charging)
 			{
 				holoMoon.transform.position += cam.transform.forward * Time.deltaTime * aimSpeed;
-				moonMass += massGain;
 			}
 		}
 		if (Input.GetMouseButtonUp(0))
@@ -56,8 +53,6 @@ public class moonGenerator : MonoBehaviour {
 			Destroy(holoMoon);
 			moon = Instantiate(moonPrefab, holoMoon.transform.position, holoMoon.transform.rotation);
 			moonAtractor = moon.GetComponent<Attractor>();
-			moonAtractor.setMass(moonMass);
-			Debug.Log("Moon Mass = " + moonMass);
 			thisAttractor.active = true;
 			rb.useGravity = false;
 		}
@@ -65,7 +60,6 @@ public class moonGenerator : MonoBehaviour {
 		{
 			Destroy(moon);
 			thisAttractor.active = false;
-			moonMass = mass;
 			rb.useGravity = true;
 		}
 	}
