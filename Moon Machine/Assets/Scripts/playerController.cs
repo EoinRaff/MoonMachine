@@ -14,7 +14,7 @@ public class playerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (GetComponentInParent<Attractor>().active)
+        /*if (GetComponentInParent<Attractor>().active)
 		{
 			return;
 		}
@@ -26,8 +26,16 @@ public class playerController : MonoBehaviour {
 			strafe *= Time.deltaTime;
 
 			transform.Translate(strafe, 0, translation);
-		}
-		if (Input.GetKeyDown("escape"))
+		}*/
+
+        float translation = Input.GetAxis("Vertical") * speed;
+        float strafe = Input.GetAxis("Horizontal") * speed;
+        translation *= Time.deltaTime;
+        strafe *= Time.deltaTime;
+
+        transform.Translate(strafe, 0, translation);
+
+        if (Input.GetKeyDown("escape"))
 		{
 			Cursor.lockState = CursorLockMode.None;
 		}
