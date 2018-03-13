@@ -107,3 +107,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b281a440d856fd4a85ca2a12adb9fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HazardType: Floor
+  gameManager: {fileID: 0}
