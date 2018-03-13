@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,16 +11,19 @@ public class GameManager : MonoBehaviour
 
 	private InputManager inputManager;
 
+	private Scene scene;
 	private int currentLevel = 0;
 	private string currentState = "paused";
 
-
 	private void Awake()
     {
+		scene = SceneManager.GetActiveScene();
+
 		if (instance == null)
 		{
 			instance = this;
-		} else if (instance != this)
+		} 
+		else if (instance != this)
 		{
 			Destroy(this.gameObject);
 		}
@@ -31,13 +35,25 @@ public class GameManager : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
 		CheckInput();
     }
 
-	public void CheckInput(){
+	public void CheckInput()
+	{
 		inputManager.checkInput();
 	}
+
+	public void ResetLevel()
+	{
+		//TODO: Implement a "soft reset" within a level
+		scene = SceneManager.GetActiveScene();
+		SceneManager.LoadScene(scene.name);
+	}
+	public void LoadNextLevel()
+	{
+		SceneManager.LoadScene(scene.buildIndex +1);
+	}
+
 }
