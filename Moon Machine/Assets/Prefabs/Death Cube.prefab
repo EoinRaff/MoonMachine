@@ -9,48 +9,48 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1482802214300762}
+  m_RootGameObject: {fileID: 1279711495728174}
   m_IsPrefabParent: 1
---- !u!1 &1482802214300762
+--- !u!1 &1279711495728174
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4756698646631288}
-  - component: {fileID: 33187873346217236}
-  - component: {fileID: 135428732733961700}
-  - component: {fileID: 23894761539390432}
-  - component: {fileID: 114538150308645826}
-  - component: {fileID: 54238993694413896}
-  - component: {fileID: 114130986058661810}
+  - component: {fileID: 4798476646998832}
+  - component: {fileID: 33224649310329016}
+  - component: {fileID: 65099636813915784}
+  - component: {fileID: 23440971885181320}
+  - component: {fileID: 114276638810608108}
+  - component: {fileID: 54408798877314420}
+  - component: {fileID: 114823263517420752}
   m_Layer: 0
-  m_Name: Moon
+  m_Name: Death Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4756698646631288
+--- !u!4 &4798476646998832
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1482802214300762}
+  m_GameObject: {fileID: 1279711495728174}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 20, z: 0}
+  m_LocalPosition: {x: 0, y: 17.86, z: 4.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23894761539390432
+--- !u!23 &23440971885181320
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1482802214300762}
+  m_GameObject: {fileID: 1279711495728174}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -59,7 +59,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 04992a7aea9c95d42bcd8998eac8a75d, type: 2}
+  - {fileID: 2100000, guid: f11fff6a7fcc7bc479232a3ff0c78797, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79,65 +79,65 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33187873346217236
+--- !u!33 &33224649310329016
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1482802214300762}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54238993694413896
+  m_GameObject: {fileID: 1279711495728174}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54408798877314420
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1482802214300762}
+  m_GameObject: {fileID: 1279711495728174}
   serializedVersion: 2
-  m_Mass: 500
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114130986058661810
-MonoBehaviour:
+--- !u!65 &65099636813915784
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1482802214300762}
+  m_GameObject: {fileID: 1279711495728174}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b281a440d856fd4a85ca2a12adb9fc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HazardType: Black Hole
-  gameManager: {fileID: 0}
---- !u!114 &114538150308645826
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114276638810608108
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1482802214300762}
+  m_GameObject: {fileID: 1279711495728174}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a784f174106bff41bf1abf3485f313a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 54238993694413896}
+  rb: {fileID: 54408798877314420}
   active: 1
   decays: 0
-  massDecay: 1
---- !u!135 &135428732733961700
-SphereCollider:
+  massDecay: 0
+--- !u!114 &114823263517420752
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1482802214300762}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_GameObject: {fileID: 1279711495728174}
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b281a440d856fd4a85ca2a12adb9fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HazardType: Death Cube
+  gameManager: {fileID: 0}
