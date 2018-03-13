@@ -8,12 +8,7 @@ public class Hazard : MonoBehaviour {
 
 	public string HazardType;
 	
-	GameManager gameManager;
-
-	private void Awake() {
-		//this should set game manager references
-		gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-	}
+	public GameManager gameManager;
 
 	private void OnTriggerEnter(Collider other) {
 		if (other.tag == "Player")
