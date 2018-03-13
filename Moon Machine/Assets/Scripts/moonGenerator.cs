@@ -10,7 +10,7 @@ public class moonGenerator : MonoBehaviour {
 	public float minDistance = 1f;
 	public GameObject cam;		
 	
-	bool charging;
+	public bool charging;
 
 	[SerializeField]
 	GameObject holoMoonPrefab;
