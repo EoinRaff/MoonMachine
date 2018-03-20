@@ -53,5 +53,5 @@ public class playerMotor : MonoBehaviour {
 		rb.MoveRotation(rb.rotation * Quaternion.Euler(rotation));
 		cam.transform.Rotate(-cameraRotation);
 	}
-
+							 
 }

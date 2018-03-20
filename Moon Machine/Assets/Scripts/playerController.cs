@@ -30,19 +30,29 @@ public class playerController : MonoBehaviour
     GameObject moon;
 
     private playerMotor motor;
-    Vector3 gravity = new Vector3(0, -1, 0);
 
-    void Start()
-    {
+	CharacterController controller;
+	public float gravityPull;
 
-        motor = GetComponent<playerMotor>();
+	Rigidbody rb;
+	void Start()
+	{
+		rb = GetComponent<Rigidbody>();
+		motor = GetComponent<playerMotor>();
+		gravityPull = 15f;
     }
 
 
     void Update()
     {
-        #region Movement and Rotation
-        float xMov = Input.GetAxisRaw("Horizontal");
+
+		// this.gameObject.transform.position -= Vector3.up * Time.deltaTime * gravityPull;
+		// rb.AddForce(Vector3.up * Time.deltaTime * gravityPull);
+		rb.AddForce(-Vector3.up * Time.deltaTime * gravityPull, ForceMode.VelocityChange );
+	
+
+		#region Movement and Rotation
+		float xMov = Input.GetAxisRaw("Horizontal");
         float zMov = Input.GetAxisRaw("Vertical");
 
         Vector3 _movHorizontal = transform.right * xMov;
@@ -106,7 +116,11 @@ public class playerController : MonoBehaviour
             motor.Move(force);
         }
 
-        #endregion
-    }
+		#endregion
+
+
+
+
+	}
 
 }
