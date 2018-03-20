@@ -53,15 +53,15 @@ public class moonGenerator : MonoBehaviour {
 			Destroy(holoMoon);
 			Destroy(moon);
 			moon = Instantiate(moonPrefab, holoMoon.transform.position, holoMoon.transform.rotation);
-			moonAtractor = moon.GetComponent<Attractor>();
-			thisAttractor.active = true;
-			rb.useGravity = false;
+			//moonAtractor = moon.GetComponent<Attractor>();
+			//thisAttractor.active = true;
+			//rb.useGravity = false;
 		}
 		if (Input.GetMouseButton(1))
 		{
 			Destroy(moon);
-			thisAttractor.active = false;
-			rb.useGravity = true;
+			//thisAttractor.active = false;
+			//rb.useGravity = true;
 		}
 	}
 }
