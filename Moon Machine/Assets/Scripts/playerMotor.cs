@@ -13,7 +13,7 @@ public class playerMotor : MonoBehaviour {
 	private Vector3 cameraRotation = Vector3.zero;
 
 
-	private Rigidbody rb;
+	public Rigidbody rb;
 
 	private void Start() 
 	{

@@ -5,18 +5,18 @@ using UnityEngine;
 [RequireComponent(typeof(playerMotor))]
 public class playerController : MonoBehaviour
 {
-
     [SerializeField]
     private float speed = 5f;
     [SerializeField]
     private float lookSensitivity = 3f;
-	[SerializeField]
-	private float minimumVelocity = 5f;
-	private float dist;
+    [SerializeField]
+    private float minimumVelocity = 5f;
+    private float dist;
 
 
-    public float aimSpeed = 5;
-    public float minDistance = 1f;
+    public float aimSpeed = 15;
+    public float minDistance = 10f;
+	public float deceleration;
     public GameObject cam;
 
     public bool charging;
@@ -31,10 +31,12 @@ public class playerController : MonoBehaviour
 
     private playerMotor motor;
     Vector3 gravity = new Vector3(0, -1, 0);
+	Vector3 previousPos = Vector3.zero;
+	Vector3 blackHolePos;
+    Vector3 force;
 
     void Start()
     {
-
         motor = GetComponent<playerMotor>();
     }
 
@@ -76,8 +78,11 @@ public class playerController : MonoBehaviour
             if (charging)
             {
                 holoMoon.transform.position += cam.transform.forward * Time.deltaTime * aimSpeed;
-                //holoMoon.GetComponent<Rigidbody>().MovePosition(cam.transform.forward * Time.deltaTime * aimSpeed);
             }
+			if (moon != null)
+			{
+				previousPos = moon.transform.position;
+			}
         }
         if (Input.GetMouseButtonUp(0))
         {
@@ -85,26 +90,33 @@ public class playerController : MonoBehaviour
             Destroy(holoMoon);
             Destroy(moon);
             moon = Instantiate(moonPrefab, holoMoon.transform.position, holoMoon.transform.rotation);
-			dist = Vector3.Distance(transform.position, moon.transform.position);
-			
-            //moonAtractor = moon.GetComponent<Attractor>();
-            //thisAttractor.active = true;
-            //rb.useGravity = false;
+            dist = Vector3.Distance(transform.position, moon.transform.position);
+			blackHolePos = moon.transform.position;
         }
         if (Input.GetMouseButton(1))
         {
             Destroy(moon);
-            //thisAttractor.active = false;
-            //rb.useGravity = true;
         }
+
+
         if (moon != null)
         {
-            float attraction = Vector3.Distance(transform.position, moon.transform.position);
-			attraction = Mathf.Clamp(attraction, minimumVelocity,dist);
-			Debug.Log(attraction);
-            Vector3 force = (moon.transform.position - transform.position).normalized * attraction;
-            motor.Move(force);
+            if (Vector3.Distance(transform.position, moon.transform.position) < minimumVelocity/2)
+            {
+                Destroy(moon);
+            }
+            else
+            {
+                float attraction = Vector3.Distance(transform.position, moon.transform.position);
+                attraction = Mathf.Clamp(attraction, minimumVelocity, dist);
+                Debug.Log(attraction);
+                blackHolePos = (moon.transform.position - transform.position).normalized * attraction;
+            }
         }
+		previousPos = (previousPos - transform.position) * deceleration;
+		force = blackHolePos + previousPos + gravity;
+		motor.Move(force + _velocity);
+
 
         #endregion
     }
