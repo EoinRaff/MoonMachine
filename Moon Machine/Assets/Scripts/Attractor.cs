@@ -59,10 +59,8 @@ public class Attractor : MonoBehaviour {
 		if (gameObject.name == "Player")
 		{
 
-				rotation = Quaternion.LookRotation(objToAttract.transform.position - transform.position);
-				transform.rotation = Quaternion.Slerp(transform.rotation, rotation, i * distance);
 
-			//this.gameObject.transform.RotateAround(objToAttract.transform.position, Vector3.up + Vector3.right, Mathf.Sin(1));
+			this.gameObject.transform.RotateAround(objToAttract.transform.position, Vector3.up + Vector3.right, Mathf.Sin(1));
 			i++;
 		}
 
