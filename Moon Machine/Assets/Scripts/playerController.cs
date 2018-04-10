@@ -5,13 +5,20 @@ using UnityEngine;
 [RequireComponent(typeof(playerMotor))]
 public class playerController : MonoBehaviour
 {
+
+    //TODO:
+    //- isGrounded(){
+    //- if rb is grounded, disable forces
+    //
+    //-cooldown on moon shooter
+    
     [SerializeField]
     private float speed = 5f;
     [SerializeField]
     private float lookSensitivity = 3f;
     [SerializeField]
     private float minimumVelocity = 5f;
-    private float dist;
+    private float spawnDistance;
 
 
     public float aimSpeed = 50;
@@ -30,21 +37,27 @@ public class playerController : MonoBehaviour
     GameObject moon;
 
     private playerMotor motor;
+    private Rigidbody rb;
     Vector3 gravity = new Vector3(0, -10, 0);
-    Vector3 previousPos = Vector3.zero;
-    Vector3 blackHolePos;
-    Vector3 activeForce;
-    Vector3 momentum;
+    Vector3 momentum = Vector3.zero;
+    Vector3 attractiveForce;
     Vector3 force;
 
     void Start()
     {
         motor = GetComponent<playerMotor>();
+        rb = GetComponent<Rigidbody>();
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            toggleMenu();
+        }
         //TODO: 
         //-Clamp camera vertical axis
         //-Lock Cursor
@@ -57,7 +70,7 @@ public class playerController : MonoBehaviour
 
         Vector3 _velocity = (_movHorizontal + _movVertical).normalized * speed;
 
-        motor.Move(_velocity);
+        
 
         float _yRot = Input.GetAxisRaw("Mouse X");
 
@@ -66,6 +79,7 @@ public class playerController : MonoBehaviour
         motor.Rotate(_rotation);
 
         float _xRot = Input.GetAxisRaw("Mouse Y");
+        Debug.Log(_xRot);
 
         Vector3 _camerRotation = new Vector3(_xRot, 0f, 0f) * lookSensitivity;
 
@@ -85,10 +99,6 @@ public class playerController : MonoBehaviour
             {
                 holoMoon.transform.position += cam.transform.forward * Time.deltaTime * aimSpeed;
             }
-            if (moon != null) //I can't remember this one
-            {
-                previousPos = moon.transform.position;
-            }
         }
         if (Input.GetMouseButtonUp(0)) //generate new moon at location of aim when LMB released
         {
@@ -97,49 +107,72 @@ public class playerController : MonoBehaviour
             Destroy(holoMoon);
 
             // assign previous moon's force OR velocity as momentum then delete the active moon
-            momentum = activeForce;
+            ChangeMomentum();
             Destroy(moon);
 
             //create the new moon and save its position
             moon = Instantiate(moonPrefab, holoMoon.transform.position, holoMoon.transform.rotation);
-            dist = Vector3.Distance(transform.position, moon.transform.position);
-            blackHolePos = moon.transform.position;
+            spawnDistance = Vector3.Distance(transform.position, moon.transform.position);
+            attractiveForce = moon.transform.position;
         }
         if (Input.GetMouseButton(1))
         {
+            ChangeMomentum();
             Destroy(moon);
         }
 
         if (moon != null)
         {
-  //          Debug.Log("Active Moon");
-            if (Vector3.Distance(transform.position, moon.transform.position) < minimumVelocity / 2) //destroy the moon if you get too close
+            if (Vector3.Distance(transform.position, moon.transform.position) < minDistance) //destroy the moon if you get too close
             {
+                ChangeMomentum();
                 Destroy(moon);
             }
             else //move towards moon
             {
                 float attraction = Vector3.Distance(transform.position, moon.transform.position);
-                attraction = Mathf.Clamp(attraction, minimumVelocity, dist);
-                blackHolePos = (moon.transform.position - transform.position).normalized * attraction;
+                attraction = Mathf.Clamp(attraction, minimumVelocity, spawnDistance);
+                attractiveForce = (moon.transform.position - transform.position).normalized * attraction;
             }
-            // I can't remember what previousPos was meant to do, but whatever it was it doesn't work.
-            //previousPos = (previousPos - transform.position) * deceleration;
-            activeForce = blackHolePos;
-//            force = blackHolePos + previousPos + gravity;
+
+            motor.Move(attractiveForce + momentum);
+
         }
         else
         {
-//            Debug.Log("No active Moon");
-            activeForce = _velocity;
+            motor.Move(_velocity + momentum + gravity);
         }
         //TODO: make momentum from previous moons carry over and decay over time. VERY IMPORTANT
-        momentum = Vector3.Lerp(momentum, Vector3.zero, 100);
-        Debug.Log("momentum: " + momentum);
-        motor.Move(activeForce + momentum + gravity);
-
+        //motor.Move(force + momentum + gravity);
+        momentum = UpdateMomentum();
         #endregion
 
+        //motor.Move(attractiveForce);
+        //motor.Move(momentum);
+        //force = _velocity + attractiveForce + momentum;
+        //motor.Move(force);
     }
-
+    void ChangeMomentum()
+    {
+        momentum = attractiveForce;
+    }
+    Vector3 UpdateMomentum()
+    {
+        Vector3 direction = momentum.normalized;
+        float magnitude = momentum.magnitude;
+        magnitude *= deceleration;
+        return direction*magnitude;
+    }
+    void toggleMenu(){
+        Cursor.visible = !Cursor.visible;
+        if (!Cursor.visible)
+        {
+            //display Menu
+            Cursor.lockState = CursorLockMode.Confined;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+    }
 }

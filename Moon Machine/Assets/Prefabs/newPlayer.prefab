@@ -190,9 +190,9 @@ MonoBehaviour:
   speed: 10
   lookSensitivity: 3
   minimumVelocity: 5
-  aimSpeed: 15
-  minDistance: 10
-  deceleration: 0.7
+  aimSpeed: 50
+  minDistance: 5
+  deceleration: 0.975
   cam: {fileID: 1334564899522592}
   charging: 0
   holoMoonPrefab: {fileID: 1610487505892426, guid: 8463d440698905540a614f5d6862a80f,
@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 20521931450833112}
-  rb: {fileID: 0}
+  rb: {fileID: 54834352368012426}
 --- !u!124 &124858343262768722
 Behaviour:
   m_ObjectHideFlags: 1

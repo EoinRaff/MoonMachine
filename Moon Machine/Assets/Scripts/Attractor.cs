@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Attractor : MonoBehaviour {
 
-	const float G = 0.6674f;
+	const float G = 667.4f;
 
 	public Rigidbody rb;
 	public bool active = true;
