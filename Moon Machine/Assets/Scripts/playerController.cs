@@ -16,7 +16,7 @@ public class playerController : MonoBehaviour
 
     public float aimSpeed = 15;
     public float minDistance = 10f;
-	public float deceleration;
+    public float deceleration;
     public GameObject cam;
 
     public bool charging;
@@ -30,9 +30,11 @@ public class playerController : MonoBehaviour
     GameObject moon;
 
     private playerMotor motor;
-    Vector3 gravity = new Vector3(0, -1, 0);
-	Vector3 previousPos = Vector3.zero;
-	Vector3 blackHolePos;
+    Vector3 gravity = new Vector3(0, -10, 0);
+    Vector3 previousPos = Vector3.zero;
+    Vector3 blackHolePos;
+    Vector3 activeForce;
+    Vector3 momentum;
     Vector3 force;
 
     void Start()
@@ -43,6 +45,7 @@ public class playerController : MonoBehaviour
 
     void Update()
     {
+        //TODO: Clamp camera vertical axis
         #region Movement and Rotation
         float xMov = Input.GetAxisRaw("Horizontal");
         float zMov = Input.GetAxisRaw("Vertical");
@@ -68,30 +71,31 @@ public class playerController : MonoBehaviour
         #endregion
 
         #region MoonControl
-        if (Input.GetMouseButtonDown(0))
+        //TODO: fix big where player gets pulled back to origin
+        if (Input.GetMouseButtonDown(0)) //begin charging if the user presses LMB
         {
             charging = true;
             holoMoon = Instantiate(holoMoonPrefab, transform.position + cam.transform.forward * minDistance, cam.transform.rotation);
         }
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0)) //continue charging while holding LMB
         {
             if (charging)
             {
                 holoMoon.transform.position += cam.transform.forward * Time.deltaTime * aimSpeed;
             }
-			if (moon != null)
-			{
-				previousPos = moon.transform.position;
-			}
+            if (moon != null) //I can't remember this one
+            {
+                previousPos = moon.transform.position;
+            }
         }
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0)) //generate new moon at location of aim when LMB released
         {
             charging = false;
             Destroy(holoMoon);
             Destroy(moon);
             moon = Instantiate(moonPrefab, holoMoon.transform.position, holoMoon.transform.rotation);
             dist = Vector3.Distance(transform.position, moon.transform.position);
-			blackHolePos = moon.transform.position;
+            blackHolePos = moon.transform.position;
         }
         if (Input.GetMouseButton(1))
         {
@@ -101,24 +105,36 @@ public class playerController : MonoBehaviour
 
         if (moon != null)
         {
-            if (Vector3.Distance(transform.position, moon.transform.position) < minimumVelocity/2)
+            if (Vector3.Distance(transform.position, moon.transform.position) < minimumVelocity / 2) //destroy the moon if you get too close
             {
                 Destroy(moon);
             }
-            else
+            else //move towards moon
             {
                 float attraction = Vector3.Distance(transform.position, moon.transform.position);
                 attraction = Mathf.Clamp(attraction, minimumVelocity, dist);
-                Debug.Log(attraction);
                 blackHolePos = (moon.transform.position - transform.position).normalized * attraction;
             }
+            // I can't remember what previousPos was meant to do, but whatever it was it doesn't work.
+            //previousPos = (previousPos - transform.position) * deceleration;
+            force = blackHolePos;
+//            force = blackHolePos + previousPos + gravity;
         }
-		previousPos = (previousPos - transform.position) * deceleration;
-		force = blackHolePos + previousPos + gravity;
-		motor.Move(force + _velocity);
-
+        else
+        {
+            momentum = force;
+            force = Vector3.zero;
+        }
+        //TODO: make momentum from previous moons carry over and decay over time. VERY IMPORTANT
+        if (momentum != Vector3.zero)
+        {
+            momentum -= new Vector3(0.1f, 0.1f, 0.1f);
+        }
+        
+        motor.Move(force  + momentum + _velocity  + gravity);
 
         #endregion
+
     }
 
 }
