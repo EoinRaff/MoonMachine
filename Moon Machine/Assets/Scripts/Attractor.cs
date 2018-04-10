@@ -12,9 +12,6 @@ public class Attractor : MonoBehaviour {
 	public float massDecay;
 	float maxSpeed = 100;
 
-	Quaternion rotation;
-
-	float i;
 	void FixedUpdate() {
 		Attractor[] attractors = FindObjectsOfType<Attractor>();
 		
@@ -35,7 +32,6 @@ public class Attractor : MonoBehaviour {
 				if (rb.mass <= 0)
 				{
 					active = false;
-					i = 0;
 				}
 			}	
 		}
@@ -59,9 +55,7 @@ public class Attractor : MonoBehaviour {
 		if (gameObject.name == "Player")
 		{
 
-
 			this.gameObject.transform.RotateAround(objToAttract.transform.position, Vector3.up + Vector3.right, Mathf.Sin(1));
-			i++;
 		}
 
 
