@@ -14,8 +14,8 @@ public class playerController : MonoBehaviour
     private float dist;
 
 
-    public float aimSpeed = 15;
-    public float minDistance = 10f;
+    public float aimSpeed = 50;
+    public float minDistance = 1f;
     public float deceleration;
     public GameObject cam;
 
@@ -45,7 +45,9 @@ public class playerController : MonoBehaviour
 
     void Update()
     {
-        //TODO: Clamp camera vertical axis
+        //TODO: 
+        //-Clamp camera vertical axis
+        //-Lock Cursor
         #region Movement and Rotation
         float xMov = Input.GetAxisRaw("Horizontal");
         float zMov = Input.GetAxisRaw("Vertical");
@@ -90,9 +92,15 @@ public class playerController : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0)) //generate new moon at location of aim when LMB released
         {
+            //Stop charging and delete aiming reticle
             charging = false;
             Destroy(holoMoon);
+
+            // assign previous moon's force OR velocity as momentum then delete the active moon
+            momentum = activeForce;
             Destroy(moon);
+
+            //create the new moon and save its position
             moon = Instantiate(moonPrefab, holoMoon.transform.position, holoMoon.transform.rotation);
             dist = Vector3.Distance(transform.position, moon.transform.position);
             blackHolePos = moon.transform.position;
@@ -102,9 +110,9 @@ public class playerController : MonoBehaviour
             Destroy(moon);
         }
 
-
         if (moon != null)
         {
+  //          Debug.Log("Active Moon");
             if (Vector3.Distance(transform.position, moon.transform.position) < minimumVelocity / 2) //destroy the moon if you get too close
             {
                 Destroy(moon);
@@ -117,21 +125,18 @@ public class playerController : MonoBehaviour
             }
             // I can't remember what previousPos was meant to do, but whatever it was it doesn't work.
             //previousPos = (previousPos - transform.position) * deceleration;
-            force = blackHolePos;
+            activeForce = blackHolePos;
 //            force = blackHolePos + previousPos + gravity;
         }
         else
         {
-            momentum = force;
-            force = Vector3.zero;
+//            Debug.Log("No active Moon");
+            activeForce = _velocity;
         }
         //TODO: make momentum from previous moons carry over and decay over time. VERY IMPORTANT
-        if (momentum != Vector3.zero)
-        {
-            momentum -= new Vector3(0.1f, 0.1f, 0.1f);
-        }
-        
-        motor.Move(force  + momentum + _velocity  + gravity);
+        momentum = Vector3.Lerp(momentum, Vector3.zero, 100);
+        Debug.Log("momentum: " + momentum);
+        motor.Move(activeForce + momentum + gravity);
 
         #endregion
 
