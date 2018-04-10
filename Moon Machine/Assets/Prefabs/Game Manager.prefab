@@ -51,5 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeda0956eefe8394498e6c2b08796245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameIsPaused: 0
   inputManagerPrefab: {fileID: 1716813939471620, guid: a5b23a84da07dc544beb76d57c3b749f,
+    type: 2}
+  pauseMenuUI: {fileID: 1509240073378368, guid: 287ba99950abb4e488c7b0dc7937d68f,
     type: 2}
