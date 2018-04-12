@@ -7,7 +7,7 @@ public class devHud : MonoBehaviour {
 
     //TODO: Don't hardcode button input, but rather get the variable name
 
-    playerController playerScript;      //Referencing player controls
+//    playerController playerScript;      //Referencing player controls
     Attractor attractorScript;          //Referencing attractor script
     moonGenerator mg;                   //Referencing moonGenerator script
     GameObject player;                  //Referencing the player
@@ -22,7 +22,7 @@ public class devHud : MonoBehaviour {
     {
 
         //Associate objects of scripts with the proper real script
-        playerScript = GameObject.Find("Player").GetComponent<playerController>();
+  //      playerScript = GameObject.Find("Player").GetComponent<playerController>();
         attractorScript = GameObject.Find("Player").GetComponent<Attractor>();
         mg = GameObject.Find("Player").GetComponent<moonGenerator>();
         player = GameObject.Find("Player");

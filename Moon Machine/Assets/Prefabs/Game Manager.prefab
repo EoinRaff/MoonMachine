@@ -54,5 +54,5 @@ MonoBehaviour:
   gameIsPaused: 0
   inputManagerPrefab: {fileID: 1716813939471620, guid: a5b23a84da07dc544beb76d57c3b749f,
     type: 2}
-  pauseMenuUIPrefab: {fileID: 1509240073378368, guid: 287ba99950abb4e488c7b0dc7937d68f,
+  pauseMenuUIPrefab: {fileID: 1778547828364444, guid: 7edc5ee55afa38e4fadf20f7e8369a99,
     type: 2}
