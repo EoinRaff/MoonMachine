@@ -76,9 +76,9 @@ public class playerController : MonoBehaviour
 
         //Calculate and apply camera rotation
         float _xRot = Input.GetAxisRaw("Mouse Y");
+
         float _cameraRotationX = _xRot * lookSensitivity;
         motor.RotateCamera(_cameraRotationX);
-
         #endregion
 
         #region MoonControl
