@@ -58,7 +58,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1321526838313026}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -45.9, y: 33, z: 0}
+  m_LocalPosition: {x: -26.74, y: 6.34, z: -29.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4801570217879404}
@@ -188,8 +188,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fca2dddc410ef64dbdff073fa5d754c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aimSpeed: 50
-  minDistance: 20
+  aimSpeed: 20
+  minDistance: 15
   cam: {fileID: 1706332854882988}
   charging: 0
   holoMoonPrefab: {fileID: 1610487505892426, guid: 8463d440698905540a614f5d6862a80f,
@@ -208,8 +208,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 54583413031029430}
   active: 1
-  decays: 0
-  massDecay: 0
+  minMagnitude: 15
+  maxMagnitude: 30
 --- !u!114 &114692463530580742
 MonoBehaviour:
   m_ObjectHideFlags: 1

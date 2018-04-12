@@ -6,8 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(Attractor))]
 public class moonGenerator : MonoBehaviour {
 
-	public float aimSpeed = 5;
-	public float minDistance = 1f;
+	public float aimSpeed = 50f;
+	public float minDistance = 15f;
 	public GameObject cam;		
 	
 	public bool charging;

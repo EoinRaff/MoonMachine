@@ -8,8 +8,9 @@ public class Attractor : MonoBehaviour {
 
 	public Rigidbody rb;
 	public bool active = true;
-	public bool decays;
-	public float massDecay;
+	public float minMagnitude = 25;
+	public float maxMagnitude = 50;
+
 
 	void FixedUpdate() {
 		Attractor[] attractors = FindObjectsOfType<Attractor>();
@@ -23,16 +24,7 @@ public class Attractor : MonoBehaviour {
 					Attract(a);
 				}
 			}
-			if (decays)
-			{
-				rb.mass -= massDecay;
-				if (rb.mass <= 0)
-				{
-					active = false;
-				}
-			}	
 		}
-
 	}
 
 	void Attract(Attractor objToAttract)
@@ -43,8 +35,12 @@ public class Attractor : MonoBehaviour {
 		Vector3 direction = rb.position - rbToAttract.position;
 		float distance = direction.magnitude;
 
-		float forceMagnitude = G * (rb.mass * rbToAttract.mass)/Mathf.Pow(distance, 2);
-		Vector3 force = direction.normalized * forceMagnitude;
+		//float forceMagnitude = G * (rb.mass * rbToAttract.mass)/Mathf.Pow(distance, 2);
+		//Debug.Log("mag = " + forceMagnitude);
+		// forceMagnitude = Mathf.Clamp(forceMagnitude, minMagnitude, maxMagnitude);
+		// forceMagnitude = Mathf.Clamp()
+		// Debug.Log("Clamped mag = " + forceMagnitude);
+		Vector3 force = direction.normalized * 25; //replace Grav. calculation with constant force power. Not stored as variable because it keeps changing to 0 for some reason...
 
 		rbToAttract.AddForce(force);
 	}

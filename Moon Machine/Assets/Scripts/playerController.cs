@@ -11,7 +11,7 @@ public class playerController : MonoBehaviour
     //- if rb is grounded, disable forces
     //
     //-cooldown on moon shooter
-    
+
     [SerializeField]
     private float speed = 5f;
     [SerializeField]
@@ -58,36 +58,30 @@ public class playerController : MonoBehaviour
         {
             toggleMenu();
         }
-        //TODO: 
-        //-Clamp camera vertical axis
-        //-Lock Cursor
         #region Movement and Rotation
-        float xMov = Input.GetAxisRaw("Horizontal");
-        float zMov = Input.GetAxisRaw("Vertical");
+        float _xMov = Input.GetAxis("Horizontal");
+        float _zMov = Input.GetAxis("Vertical");
 
-        Vector3 _movHorizontal = transform.right * xMov;
-        Vector3 _movVertical = transform.forward * zMov;
+        Vector3 _movHorizontal = transform.right * _xMov;
+        Vector3 _movVertical = transform.forward * _zMov;
 
-        Vector3 _velocity = (_movHorizontal + _movVertical).normalized * speed;
+        Vector3 _velocity = (_movHorizontal + _movVertical) * speed;
 
-        
+        motor.Move(_velocity);
 
+        //Calculate and apply rotation
         float _yRot = Input.GetAxisRaw("Mouse X");
-
         Vector3 _rotation = new Vector3(0f, _yRot, 0f) * lookSensitivity;
-
         motor.Rotate(_rotation);
 
+        //Calculate and apply camera rotation
         float _xRot = Input.GetAxisRaw("Mouse Y");
-        Debug.Log(_xRot);
+        float _cameraRotationX = _xRot * lookSensitivity;
+        motor.RotateCamera(_cameraRotationX);
 
-        Vector3 _camerRotation = new Vector3(_xRot, 0f, 0f) * lookSensitivity;
-
-        motor.RotateCamera(_camerRotation);
         #endregion
 
         #region MoonControl
-        //TODO: fix big where player gets pulled back to origin
         if (Input.GetMouseButtonDown(0)) //begin charging if the user presses LMB
         {
             charging = true;
@@ -134,22 +128,11 @@ public class playerController : MonoBehaviour
                 attraction = Mathf.Clamp(attraction, minimumVelocity, spawnDistance);
                 attractiveForce = (moon.transform.position - transform.position).normalized * attraction;
             }
-
-            motor.Move(attractiveForce + momentum);
-
         }
-        else
-        {
-            motor.Move(_velocity + momentum + gravity);
-        }
-        //TODO: make momentum from previous moons carry over and decay over time. VERY IMPORTANT
-        //motor.Move(force + momentum + gravity);
+
         momentum = UpdateMomentum();
         #endregion
-
-        //motor.Move(attractiveForce);
-        //motor.Move(momentum);
-        //force = _velocity + attractiveForce + momentum;
+        force = _velocity + attractiveForce + momentum;
         //motor.Move(force);
     }
     void ChangeMomentum()
@@ -161,9 +144,10 @@ public class playerController : MonoBehaviour
         Vector3 direction = momentum.normalized;
         float magnitude = momentum.magnitude;
         magnitude *= deceleration;
-        return direction*magnitude;
+        return direction * magnitude;
     }
-    void toggleMenu(){
+    void toggleMenu()
+    {
         Cursor.visible = !Cursor.visible;
         if (!Cursor.visible)
         {
