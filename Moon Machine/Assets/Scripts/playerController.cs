@@ -54,10 +54,6 @@ public class playerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            toggleMenu();
-        }
         //TODO: 
         //-Clamp camera vertical axis
         //-Lock Cursor
@@ -79,8 +75,7 @@ public class playerController : MonoBehaviour
         motor.Rotate(_rotation);
 
         float _xRot = Input.GetAxisRaw("Mouse Y");
-        Debug.Log(_xRot);
-
+        
         Vector3 _camerRotation = new Vector3(_xRot, 0f, 0f) * lookSensitivity;
 
         motor.RotateCamera(_camerRotation);
@@ -162,17 +157,5 @@ public class playerController : MonoBehaviour
         float magnitude = momentum.magnitude;
         magnitude *= deceleration;
         return direction*magnitude;
-    }
-    void toggleMenu(){
-        Cursor.visible = !Cursor.visible;
-        if (!Cursor.visible)
-        {
-            //display Menu
-            Cursor.lockState = CursorLockMode.Confined;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
     }
 }
