@@ -40,7 +40,7 @@ Material:
         m_Offset: {x: 1.5691679, y: 0}
     m_Floats:
     - _Displacement: 0.0375
-    - _DistortX: 2
+    - _DistortX: 1.02
     - _DistortY: 0
     - _RefractTexTiling: 1
     m_Colors:
