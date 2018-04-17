@@ -39,9 +39,9 @@ public class GameManager : MonoBehaviour
 
 		if (SceneManager.GetActiveScene().buildIndex > 0)
 		{
-			Canvas canvas = GameObject.FindObjectOfType<Canvas>();
-			pauseMenuUI = Instantiate(pauseMenuUIPrefab);
-			pauseMenuUI.transform.parent = canvas.transform;
+			//Canvas canvas = GameObject.FindObjectOfType<Canvas>();
+            pauseMenuUI = Instantiate(pauseMenuUIPrefab);
+			//pauseMenuUI.transform.parent = canvas.transform;
 		}
     }
     private void Start()
@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void ResetLevel()
-    {
+    {   
         //TODO: Implement a "soft reset" within a level
         scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
