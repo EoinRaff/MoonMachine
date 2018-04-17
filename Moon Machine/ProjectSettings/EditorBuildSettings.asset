@@ -15,5 +15,8 @@ EditorBuildSettings:
     path: Assets/_scenes/LevelGin.unity
     guid: 1634cec7010f17f4ebeca3c036b9cde2
   - enabled: 1
+    path: Assets/_scenes/chimneyEscapeLevel.unity
+    guid: a0a01af7900a6ed4a956c6d1f5a1cf02
+  - enabled: 1
     path: Assets/_scenes/Credits.unity
     guid: d951d0bd1a9798042891782246083c47
