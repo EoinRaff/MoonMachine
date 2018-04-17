@@ -7,6 +7,10 @@ using UnityEngine;
 public class moonGenerator : MonoBehaviour
 {
 
+    bool canShootMoon = true;
+    public float coolDownTime = 1;
+    //0 = charging moon, 1 = fixed pos, 2 = static on aim.
+
     public float aimSpeed = 50f;
     public float minDistance = 15f;
     public GameObject cam;
@@ -34,7 +38,7 @@ public class moonGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!PauseMenu.GameIsPaused)
+        if (!PauseMenu.GameIsPaused && canShootMoon)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -58,6 +62,9 @@ public class moonGenerator : MonoBehaviour
                 Destroy(holoMoon);
                 Destroy(moon);
                 moon = Instantiate(moonPrefab, holoMoon.transform.position, holoMoon.transform.rotation);
+
+                StartCoroutine(Cooldown(coolDownTime));
+
                 //moonAtractor = moon.GetComponent<Attractor>();
                 //thisAttractor.active = true;
                 //rb.useGravity = false;
@@ -70,5 +77,14 @@ public class moonGenerator : MonoBehaviour
             }
         }
 
+    }
+    IEnumerator Cooldown(float duration)
+    {
+        Debug.Log("Deactivate");
+        canShootMoon = false;
+        Debug.Log("Wait");
+        yield return new WaitForSeconds(duration);
+        Debug.Log("reactivate");
+        canShootMoon = true;
     }
 }

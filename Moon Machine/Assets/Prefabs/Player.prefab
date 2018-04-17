@@ -188,6 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fca2dddc410ef64dbdff073fa5d754c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coolDownTime: 1
   aimSpeed: 20
   minDistance: 15
   cam: {fileID: 1706332854882988}
