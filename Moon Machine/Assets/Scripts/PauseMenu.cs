@@ -1,4 +1,4 @@
-﻿ using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,14 +7,14 @@ public class PauseMenu : MonoBehaviour
 {
 
     public static bool GameIsPaused = false;
-	public GameObject pauseMenuUI;
+    public GameObject pauseMenuUI;
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-			Debug.Log("esc");
+            Debug.Log("esc");
             if (GameIsPaused)
             {
                 Resume();
@@ -44,15 +44,23 @@ public class PauseMenu : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
-	public void LoadMenu()
-	{
-		Debug.Log("load");
+    public void LoadMenu()
+    {
+        Debug.Log("load");
         SceneManager.LoadScene(0);
-	}
-	public void QuitGame()
-	{
-		Debug.Log("quiting game");
+    }
+    public void QuitGame()
+    {
+        Debug.Log("quiting game");
         Application.Quit();
 
-	}
+    }
+    public void LoadNextLevel()
+    {
+        Debug.Log("loading next level");
+        Time.timeScale = 1f;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 }
