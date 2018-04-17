@@ -1,0 +1,403 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Key",
+				"KeyCode\tKeyCode"
+			],
+			[
+				"Getkey",
+				"GetKeyDown(string name)\tbool"
+			],
+			[
+				"getkey",
+				"GetKeyDown(string name)\tbool"
+			],
+			[
+				"de",
+				"decode\tfunction"
+			],
+			[
+				"l",
+				"layers\tmodule"
+			],
+			[
+				"array",
+				"array_equal\tfunction"
+			],
+			[
+				"tens",
+				"tensorflow\tmodule"
+			],
+			[
+				"impor",
+				"import\t(Anaconda.sublime-settings)"
+			],
+			[
+				"im",
+				"import\t(Anaconda.sublime-settings)"
+			],
+			[
+				"argm",
+				"argmin\tfunction"
+			],
+			[
+				"np",
+				"numpy"
+			],
+			[
+				"flas",
+				"Flask\tFlask"
+			],
+			[
+				"img",
+				"img_height\tstatement"
+			],
+			[
+				"weight",
+				"weight_path"
+			],
+			[
+				"top",
+				"top_model_weights_path\t(retrainVGG16.py)"
+			],
+			[
+				"vg",
+				"vgg16"
+			],
+			[
+				"vgg",
+				"vgg16_weights.h5\t(retrainVGG16.py)"
+			],
+			[
+				"img_",
+				"img_width\tstatement"
+			],
+			[
+				"dat",
+				"data_dir\tstatement"
+			],
+			[
+				"nb",
+				"nb_validation_samples\tstatement"
+			],
+			[
+				"inp",
+				"input_shape\tstatement"
+			],
+			[
+				"da",
+				"data_dir"
+			],
+			[
+				"image",
+				"ImageDataGenerator\tmodule"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "Assets/Scripts/Attractor.cs",
+			"settings":
+			{
+				"buffer_size": 1214,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Moon Machine.sublime-project",
+			"settings":
+			{
+				"buffer_size": 155,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 124.0,
+		"last_filter": "install",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"remove ",
+				"Package Control: Remove Package"
+			],
+			[
+				"sublimerepl:py",
+				"SublimeREPL: Python"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 520.0
+	},
+	"console":
+	{
+		"height": 119.0,
+		"history":
+		[
+			"class CharacterTable(object):",
+			"# aip live coding in class",
+			"python3.5"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/rytme/Documents/git/MoonMachine/Moon Machine",
+		"/home/rytme/Documents/git/MoonMachine/Moon Machine/Assets",
+		"/home/rytme/Documents/git/MoonMachine/Moon Machine/Assets/Scripts"
+	],
+	"file_history":
+	[
+		"/home/rytme/Documents/unity/Test/Assets/test.cs",
+		"/home/rytme/Documents/unity/Test/Test.sublime-project",
+		"/home/rytme/.config/sublime-text-3/Packages/User/OmniSharpSublime.sublime-settings",
+		"/home/rytme/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/home/rytme/.config/sublime-text-3/Packages/OmniSharp/OmniSharpSublime.sublime-settings",
+		"/home/rytme/Dropbox/aip/aip9_recurrent_neural_network.py",
+		"/home/rytme/Dropbox/aip9/aip9.py",
+		"/home/rytme/Dropbox/aip/aip9_rnn/aip9.py",
+		"/home/rytme/Dropbox/aip/aip9_rnn/aip9",
+		"/home/rytme/Documents/testingauto.py",
+		"/home/rytme/Documents/testingauto",
+		"/home/rytme/.config/sublime-text-3/Packages/Jedi - Python autocompletion/sublime_jedi.sublime-settings",
+		"/home/rytme/.config/sublime-text-3/Packages/User/python3.sublime-build",
+		"/home/rytme/Dropbox/aip/aip9_rnn/addition_rnn.py",
+		"/home/rytme/.config/sublime-text-3/Packages/User/sublime_jedi.sublime-settings",
+		"/home/rytme/Documents/testbuild.py",
+		"/home/rytme/Documents/neural.py",
+		"/opt/sublime_text/sublime.py",
+		"/home/rytme/Dropbox/aip/aip9_code.py",
+		"/home/rytme/Dropbox/aip/aip9_recurrent_neural_network/aip9_code.py",
+		"/home/rytme/bin/blizzard",
+		"/home/rytme/Dropbox/web/PythonFlask/first_flask.py",
+		"/home/rytme/bin/aau_dae",
+		"/home/rytme/Dropbox/web/PythonFlask/hej.py",
+		"/home/rytme/Dropbox/web/PythonFlask/example.py",
+		"/home/rytme/Documents/aip8_anders/aip8_handin02.py",
+		"/home/rytme/Documents/aip8_anders/aip8_handin03.py",
+		"/home/rytme/.cache/.fr-a9QGQs/syntax_test_python.py",
+		"/home/rytme/Dropbox/aip/Code/Perceptron/perceptron.py",
+		"/home/rytme/Documents/aip8_hendrik/get_bottleneck_fc_model.py",
+		"/home/rytme/Documents/aip8_hendrik/retrainVGG16.py",
+		"/home/rytme/Documents/aip8_anders/vgg-16_keras.py",
+		"/home/rytme/Documents/aip8_handin03.py",
+		"/home/rytme/Documents/aip8_hendrik/data_augmentation.py"
+	],
+	"find":
+	{
+		"height": 21.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "Assets/Scripts/Attractor.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1214,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								263,
+								263
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Moon Machine.sublime-project",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 155,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								142,
+								142
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 21.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 91.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.variable_get":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/User/python3.sublime-build",
+	"project": "Moon Machine.sublime-project",
+	"replace":
+	{
+		"height": 38.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 260.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
