@@ -6,7 +6,7 @@ public class lavaTrigger : MonoBehaviour
 {
 
     public GameObject lava;
-	public float rate;
+    public float rate;
     // Use this for initialization
     private void OnTriggerEnter(Collider other)
     {
@@ -17,8 +17,13 @@ public class lavaTrigger : MonoBehaviour
             {
                 lava.GetComponent<risingLava>().isRising = true;
                 lava.GetComponent<risingLava>().rate = rate;
-
-
+            }
+        }
+        if (this.tag == "stop")
+        {
+            if (lava.GetComponent<risingLava>() != null)
+            {
+                lava.GetComponent<risingLava>().isRising = false;
             }
         }
     }
