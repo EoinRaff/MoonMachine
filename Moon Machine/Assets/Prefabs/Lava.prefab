@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114968318655708220}
   - component: {fileID: 114218535023125674}
   - component: {fileID: 65096132077624150}
+  - component: {fileID: 114457450031592672}
   m_Layer: 0
   m_Name: Lava
   m_TagString: Untagged
@@ -37,9 +38,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1565033656538184}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 62.574364, y: 39.0031, z: -25.7341}
-  m_LocalScale: {x: 3.5, y: 1, z: 3.5}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -23.7, y: -2, z: -13.6}
+  m_LocalScale: {x: 7.103612, y: 7.103612, z: 7.103612}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -110,6 +111,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uvAnimationRate: {x: 0.05, y: 0}
   textureName: _LavaTex
+--- !u!114 &114457450031592672
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1565033656538184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c556b964d802a60498218a910d893c87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRising: 1
+  rate: 2
 --- !u!114 &114968318655708220
 MonoBehaviour:
   m_ObjectHideFlags: 1
