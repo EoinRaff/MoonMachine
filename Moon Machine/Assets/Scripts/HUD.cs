@@ -11,6 +11,7 @@ public class HUD : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		moonGenerator = player.GetComponent<moonGenerator>();
+		reloadText =  GetComponent<TextMeshProUGUI>();
 	}
 	
 	// Update is called once per frame
@@ -18,19 +19,19 @@ public class HUD : MonoBehaviour {
 		if (!moonGenerator.canShootMoon)
 		{
 			//display NOT READY
-			reloadText = "NOT READY";
+			reloadText.text = "Moon Status: \nNOT READY";
 		}
 		else
 		{
 			if (moonGenerator.charging)
 			{
 				//display CHARGING
-				reloadText = "CHARGING";
+				reloadText.text = "Moon Status: \nCHARGING";
 			}
 			else
 			{
 				//display READY
-				reloadText = "READY";
+				reloadText.text = "Moon Status: \nREADY";
 			}
 		}
 	}

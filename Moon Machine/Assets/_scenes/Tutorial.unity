@@ -337,6 +337,11 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 584a8ef4749c89745b7ae07f3ba7617f, type: 2}
   m_PrefabInternal: {fileID: 69300146}
+--- !u!1 &72440272 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1321526838313026, guid: e21ab55654ce15f4fa8e2c528f052567,
+    type: 2}
+  m_PrefabInternal: {fileID: 291550460}
 --- !u!4 &75891883 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
@@ -4308,7 +4313,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e76df99c0099db7449de81816df493a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 72440272}
+  reloadText: {fileID: 910789885}
 --- !u!4 &815723709 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 93e86b57e56570d46814839867bf9a52, type: 2}
@@ -9645,7 +9651,7 @@ GameObject:
   - component: {fileID: 1951553188}
   - component: {fileID: 1951553187}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: MoonStatus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
