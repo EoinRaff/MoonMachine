@@ -7,7 +7,7 @@ using UnityEngine;
 public class moonGenerator : MonoBehaviour
 {
 
-    bool canShootMoon = true;
+    public bool canShootMoon = true;
     public float coolDownTime = 1;
     //0 = charging moon, 1 = fixed pos, 2 = static on aim.
 
